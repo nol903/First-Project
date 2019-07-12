@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="dist/css/bootstrap.css">
+<link rel="stylesheet" href="dist/fa/fa/css/all.css">
+<script src="dist/js/jquery.min.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+  <script>
+    function validate()
+    {
+      var status = true;
+
+      var fname = document.getElementById("fname").value.trim();
+      if(fname=="")
+      {
+      	
+        document.getElementById("fname").style.borderColor = "red";
+        document.getElementById("fnameerror").innerHTML = "Please Enter your First Name!";
+        status = false; // be on the same page
+         
+
+      }
+
+      else
+      {
+        document.getElementById("fname").style.borderColor = "";
+        document.getElementById("fnameerror").innerHTML = "";
+      }
+
+      // Last Name
+
+      var lname = document.getElementById("lname").value.trim();
+      if(lname=="")
+      {
+        document.getElementById("lname").style.borderColor = "red";
+        document.getElementById("lnameerror").innerHTML = "Please Enter your Last Name!";
+        status = false; // be on the same page
+
+      }
+
+      else
+      {
+        document.getElementById("lname").style.borderColor = "";
+        document.getElementById("lnameerror").innerHTML = "";
+      }
+
+      //E-mail
+
+      var email = document.getElementById("email").value.trim();
+      var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if((email=="") || (! pattern.test(email)))
+      {
+        document.getElementById("email").style.borderColor ="red";
+        document.getElementById("emailerror").innerHTML ="Please Enter Email !";
+        status=false;
+      }
+
+      else
+      {
+        document.getElementById("email").style.borderColor = "";
+        document.getElementById("emailerror").innerHTML = "";
+      }
+
+      // Mobile
+
+      var mobile = document.getElementById("mobile").value.trim();
+      if((mobile=="") || (mobile.length!=10) || (isNaN(mobile)))
+      {
+        document.getElementById("mobile").style.borderColor = "red";
+        document.getElementById("mobileerror").innerHTML = "Please Enter your mobile no!";
+        status = false; // be on the same page
+
+      }
+
+      else
+      {
+        document.getElementById("mobile").style.borderColor = "";
+        document.getElementById("mobileerror").innerHTML = "";
+      }
+      //password
+
+      var password = document.getElementById("password").value.trim();
+      if(password=="")
+      {
+        document.getElementById("password").style.borderColor = "red";
+        document.getElementById("passworderror").innerHTML = "Please Enter password!";
+        status = false; // be on the same page
+
+      }
+
+      else
+      {
+        document.getElementById("password").style.borderColor = "";
+        document.getElementById("passworderror").innerHTML = "";
+      }
+
+      // re enter password
+
+      var repassword = document.getElementById("repassword").value.trim();
+      if((repassword=="") ||(repassword!=password))
+      {
+        document.getElementById("repassword").style.borderColor = "red";
+        document.getElementById("repassworderror").innerHTML = "Your password does not match!";
+        status = false; // be on the same page
+
+      }
+
+      else
+      {
+        document.getElementById("repassword").style.borderColor = "";
+        document.getElementById("repassworderror").innerHTML = "";
+      }
+
+      //Gender
+      alert(status);
+      return status;
+    }
+  </script>
+  </head>
+<body>
+	<!-top nav start-->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Demo Site</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signup.html"><i class="fa fa-lock"></i> Sign up</a></li>
+            <li><a href="login.html"><i class = "fa fa-users"></i> Login</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<!-top nav end-->
+
+<br><br><br>
+
+<div class = "container">
+	<div class = "row">
+    <div class="col-md-2"></div>
+    <div class = "col-md-8">
+      <div class = "panel panel-primary">
+        <div class = "panel-heading text-center">Sign Up</div>
+        <div class = "panel-body">
+
+          <form action = "save.php" method="POST" onsubmit = "return validate()">
+          <div class = "row form-group">
+            <div class= "col-md-3">First Name</div>
+            <div class = "col-md-9">
+              <input type="text" class="form-control" placeholder="Enter your First Name" id="fname">
+              <i id = "fnameerror"></i>
+            </div>
+          </div> 
+
+          <div class = "row form-group">
+            <div class= "col-md-3">Last Name</div>
+            <div class = "col-md-9">
+              <input type="text" class="form-control" placeholder="Enter your Last Name" id="lname">
+              <i id = "lnameerror"></i>
+            </div>
+          </div> 
+
+          <div class = "row form-group">
+            <div class= "col-md-3">Email</div>
+            <div class = "col-md-9">
+              <input type="text" class="form-control" placeholder="Enter your Email" id = "email">
+              <i id = "emailerror"></i>
+            </div>
+          </div> 
+
+          <div class = "row form-group">
+            <div class= "col-md-3">Mobile</div>
+            <div class = "col-md-9">
+            <input type="text" class="form-control" placeholder="Enter your Mobile no" id = "mobile">
+              <i id = "mobileerror"></i>
+            </div>
+          </div>
+
+          <div class = "row form-group">
+            <div class= "col-md-3">Password</div>
+            <div class = "col-md-9">
+          <input type="password" class="form-control" placeholder="Enter your Password" id="password">
+          <i id = "passworderror">
+            </div>
+          </div> 
+
+          <div class = "row form-group">
+            <div class= "col-md-3">Re Enter Password</div>
+            <div class = "col-md-9">
+              <input type="password" class="form-control" placeholder="Re Enter your Password"
+              id="repassword">
+              <i id = "repassworderror">
+            </div>
+          </div>
+
+          <div class = "row form-group">
+            <div class= "col-md-3">Gender</div>
+            <div class = "col-md-6 col-sm-6"><input type="radio" name="Gender">Male
+            <div class = "col-md-6 col-sm-6"><input type="radio" name="Gender">Female 
+            </div>
+          </div>
+          </div> 
+           
+           <div class="row form-group">
+
+<div class="col-md-3">DOB</div>
+
+<div class="col-md-3">
+<select class="form-control">
+<option>Day</option>
+<option>1</option>
+<option>2</option>
+</select>
+</div>
+
+
+<div class="col-md-3">
+<select class="form-control">
+<option>Month</option>
+<option>Jan</option>
+<option>Feb</option>
+</select>
+</div>
+
+
+<div class="col-md-3">
+<select class="form-control">
+<option>year</option>
+<option>2018</option>
+<option>2019</option>
+</select>
+</div>
+</div>
+
+<div class = "row form-group">
+    <div class= "col-md-3">Address</div>
+    <div class = "col-md-9">
+      <textarea placeholder="Enter your Address" class="form-control" id ="address"></textarea>
+      <i id = "addresserror"></i>
+    </div>
+    </div>
+
+
+    <div class="row form-group">
+    <div class="col-md-3">Terms and conditions</div>
+    <div class="col-md-9">
+   <input type="checkbox"> I agree on terms and conditions
+    </div>
+    </div>
+
+         <div class="row form-group">
+         <div class="col-md-3"></div>
+         <div class="col-md-6  text-center">
+         <button type="button" class="btn btn-primary">Submit</button>
+        <button type = "reset" class="btn btn-success">Reset</button>
+          </div>
+
+        <div class="col-md-3"></div>
+
+        </div>
+      </form>
+    
+</div><!-body->
+
+</div> <!- Panel->
+
+<div class = "col-md-2"></div>
+
+</div> <!- row->
+</div> <!-container->
+</body>
+</html>
